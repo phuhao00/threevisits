@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form, Input, Button, Row, Col, message} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import StringifyWithCircularHandling from "./json";
+import StringifyWithCircularHandling from "../utils/json";
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 const backendPort = process.env.REACT_APP_BACKEND_PORT;
