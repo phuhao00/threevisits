@@ -1,7 +1,8 @@
-import React from 'react';
+import React , { useState }  from 'react';
 import {Form, Input, Button, Row, Col, message} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import StringifyWithCircularHandling from "../utils/json";
+import {  Navigate,useNavigate } from 'react-router-dom';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 const backendPort = process.env.REACT_APP_BACKEND_PORT;
@@ -9,6 +10,11 @@ const backendPort = process.env.REACT_APP_BACKEND_PORT;
 const apiUrl = `${backendUrl}:${backendPort}/api`;
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
     const onFinish = async (values) => {
         try {
             const response = await fetch(`${apiUrl}`+'/login', {
@@ -23,6 +29,9 @@ const Login = () => {
                 // 登录成功
                 console.log('Login successful');
                 // 执行其他操作，如页面跳转等
+                setLoggedIn(true);
+                navigate('/share');
+
             } else {
                 // 登录失败
                 console.error('Login failed');
@@ -66,10 +75,16 @@ const Login = () => {
                 <h1 className="login-title">Welcome Three Visits !</h1>
                 <Form name="login-form" onFinish={onFinish}>
                     <Form.Item name="username" rules={[{ required: true, message: 'Please enter your username' }]}>
-                        <Input prefix={<UserOutlined />} placeholder="Username" />
+                        <Input prefix={<UserOutlined />} placeholder="Username"
+                               value={username}
+                               onChange={(e) => setUsername(e.target.value)}
+                        />
                     </Form.Item>
                     <Form.Item name="password" rules={[{ required: true, message: 'Please enter your password' }]}>
-                        <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
+                        <Input prefix={<LockOutlined />} type="password" placeholder="Password"
+                               value={password}
+                               onChange={(e) => setPassword(e.target.value)}
+                        />
                     </Form.Item>
                     <Form.Item>
                         <Row gutter={8}>

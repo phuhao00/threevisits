@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QQ Music Share Poster</title>
+    <style>
+        #canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="400"></canvas>
+<br>
+<input type="file" id="image1" accept="image/*"> 图片1
+<br>
+<input type="file" id="image2" accept="image/*"> 图片2
+<br>
+<button onclick="generatePoster()">生成海报</button>
+<br>
+<h3>预览：</h3>
+<canvas id="previewCanvas" width="400" height="200"></canvas>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const image1Input = document.getElementById('image1');
+    const image2Input = document.getElementById('image2');
+    const previewCanvas = document.getElementById('previewCanvas');
+    const previewCtx = previewCanvas.getContext('2d');
+
+    image1Input.addEventListener('change', handleImageUpload);
+    image2Input.addEventListener('change', handleImageUpload);
+
+    function handleImageUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const image = new Image();
+                image.onload = function () {
+                    drawImageOnCanvas(image);
+                    drawPreviewImage();
+                };
+                image.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function drawImageOnCanvas(image) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height / 2);
+    }
+
+    function drawPreviewImage() {
+        const image1 = new Image();
+        const image2 = new Image();
+        image1.src = URL.createObjectURL(image1Input.files[0]);
+        image2.src = URL.createObjectURL(image2Input.files[0]);
+
+        image1.onload = function () {
+            image2.onload = function () {
+                previewCtx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+                previewCtx.drawImage(image1, 0, 0, previewCanvas.width, previewCanvas.height / 2);
+                previewCtx.drawImage(image2, 0, previewCanvas.height / 2, previewCanvas.width, previewCanvas.height / 2);
+            };
+        };
+    }
+
+    function generatePoster() {
+        const image1 = document.createElement('img');
+        const image2 = document.createElement('img');
+        image1.src = URL.createObjectURL(image1Input.files[0]);
+        image2.src = URL.createObjectURL(image2Input.files[0]);
+
+        image1.onload = function () {
+            image2.onload = function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(image1, 0, 0, canvas.width, canvas.height / 2);
+                ctx.drawImage(image2, 0, canvas.height / 2, canvas.width, canvas.height / 2);
+
+                // 创建一个下载链接
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'share_poster.png';
+                link.click();
+            };
+        };
+    }
+</script>
+</body>
+</html>
