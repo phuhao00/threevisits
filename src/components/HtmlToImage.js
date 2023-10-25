@@ -1,47 +1,72 @@
-import React, { useState, useRef } from 'react';
-import { saveAs } from 'file-saver';
+import React, { useState } from 'react';
+import { Upload, Button } from 'antd';
 const Share = () => {
-    const canvasRef = useRef(null);
+    const [image1, setImage1] = useState(null);
+    const [image2, setImage2] = useState(null);
 
-    const handleGenerateImage = () => {
-        const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
+    const handleImageUpload = (file, setImage) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            setImage(e.target.result);
+        };
+        reader.readAsDataURL(file);
+    };
 
-        // 创建一个Image对象
-        // 创建Image对象并加载图片
-        const img1 = new Image();
-        img1.src = require('../../src/components/logo192.png');
+    const handleImage1Upload = (file) => {
+        handleImageUpload(file, setImage1);
+    };
 
-        const img2 = new Image();
-        img2.src = require('../../src/components/logo192.png');
+    const handleImage2Upload = (file) => {
+        handleImageUpload(file, setImage2);
+    };
 
-        img1.onload = () => {
-            img2.onload = () => {
-                // 设置画布尺寸
-                canvas.width = img1.width + img2.width;
-                canvas.height = Math.max(img1.height, img2.height);
+    const generatePoster = () => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
 
-                // 在Canvas上绘制图片
-                context.drawImage(img1, 0, 0);
-                context.drawImage(img2, img1.width, 0);
+        const image1Obj = new Image();
+        image1Obj.src = image1;
+        image1Obj.onload = () => {
+            const image2Obj = new Image();
+            image2Obj.src = image2;
+            image2Obj.onload = () => {
+                canvas.width = Math.max(image1Obj.width, image2Obj.width);
+                canvas.height = image1Obj.height + image2Obj.height;
 
-                // 生成Blob对象
-                canvas.toBlob((blob) => {
-                    // 使用FileSaver.js保存Blob到本地
-                    saveAs(blob, 'generated_image.png');
-                });
+                ctx.drawImage(image1Obj, 0, 0, canvas.width, image1Obj.height);
+                ctx.drawImage(image2Obj, 0, image1Obj.height, canvas.width, image2Obj.height);
+
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'share_poster.png';
+                link.click();
             };
         };
     };
 
-
     return (
         <div>
-            <canvas ref={canvasRef}></canvas>
-            <button onClick={handleGenerateImage}>Generate Image</button>
+            <h3>预览：</h3>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {image1 && (
+                    <img src={image1} alt="图片1" style={{ width: '400px', height: 'auto' }} />
+                )}
+                {image2 && (
+                    <img src={image2} alt="图片2" style={{ width: '400px', height: 'auto' }} />
+                )}
+            </div>
+            <Upload beforeUpload={handleImage1Upload}>
+                <Button>选择图片1</Button>
+            </Upload>
+            <br />
+            <Upload beforeUpload={handleImage2Upload}>
+                <Button>选择图片2</Button>
+            </Upload>
+            <br />
+            <Button onClick={generatePoster}>生成海报</Button>
+            <br />
         </div>
     );
-
 };
 
 export default Share;
