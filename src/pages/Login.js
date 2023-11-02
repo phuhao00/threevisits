@@ -30,7 +30,7 @@ const Login = () => {
                 console.log('Login successful');
                 // 执行其他操作，如页面跳转等
                 setLoggedIn(true);
-                navigate('/share');
+                navigate('/images');
 
             } else {
                 // 登录失败

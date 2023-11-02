@@ -17,7 +17,8 @@ code {
   background-size: cover;
   width: 100%;
   height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0; /* 较低的层叠顺序 */
 }
+
