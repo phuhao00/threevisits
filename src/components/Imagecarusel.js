@@ -1,6 +1,8 @@
 import React, {useRef, useState} from 'react';
 import {Carousel} from "antd";
 import ModalImage from "react-modal-image";
+import '../styles/Imagewall.css';
+
 const ImageCarousel = ({ imageUrls }) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });

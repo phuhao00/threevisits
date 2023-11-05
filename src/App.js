@@ -1,6 +1,5 @@
 import './App.css';
 import './styles/Login.css';
-import './styles/Imagewall.css';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Imagewall from './pages/Imagewall';
