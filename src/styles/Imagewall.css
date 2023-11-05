@@ -11,13 +11,9 @@
 
 .modal-image-container {
     display: flex;
-    background-color: #fff;
     justify-content: center; /* 水平居中 */
     align-items: center; /* 垂直居中 */
     border: 1px solid #ccc; /* 可选：添加边框 */
-    flex-direction: row;
-
-
 }
 
 .modal-image {
@@ -38,14 +34,14 @@
     display: flex;
     justify-content: center; /* 水平居中 */
     align-items: center; /* 垂直居中 */
-    max-width: 50%; /* 图片最大宽度为容器宽度 */
-    height: 100vh; /* 图片最大高度为容器高度 */
+    max-width: 100%; /* 图片最大宽度为容器宽度 */
+    height: 50vh; /* 图片最大高度为容器高度 */
     border: 1px solid #ccc; /* 可选：添加边框 */
 }
 
 .image-container img {
     max-width: 100%; /* 图片最大宽度为容器宽度 */
-    height: 100vh; /* 图片最大高度为容器高度 */
+    height: 50vh; /* 图片最大高度为容器高度 */
 }
 
 

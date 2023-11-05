@@ -29,7 +29,7 @@ const ImageCarousel = ({ imageUrls }) => {
     };
 
     const closeModal = () => {
-        setSelectedImage(null);
+        setSelectedImage(imageUrls[0]);
     };
     return (
             <div className="centered-div">
@@ -47,10 +47,11 @@ const ImageCarousel = ({ imageUrls }) => {
                             className="modal-image"
                         />
                     </div>
-                )}
-                <Carousel autoplay={true} current={currentSlide} className="image-gallery">
+                )
+                }
+                <Carousel autoplay={true}  slidesToShow={3} slidesPerRow={1} current={currentSlide} className="image-gallery">
                     {imageUrls.map((url, index) => (
-                        <div key={index} >
+                        <div key={index}   className="image-container">
                             <img src={url} alt={`Image ${index + 1}`}  onClick={() => handleImageClick(index)}
                                  className="image-container"
                                  ref={imageRef} // 将引用绑定到图片元素
@@ -58,6 +59,7 @@ const ImageCarousel = ({ imageUrls }) => {
                         </div>
                     ))}
                 </Carousel>
+
             </div>
 
 
