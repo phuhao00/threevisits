@@ -9,8 +9,7 @@ const Imagewall = () => {
         '/5.jpg',
     ];
     return (
-        <div >
-            <h1>图片展示</h1>
+        <div className="parent_centered-div" >
             <ImageCarousel imageUrls={imageUrls}  />
         </div>
     );

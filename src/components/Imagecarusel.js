@@ -32,18 +32,7 @@ const ImageCarousel = ({ imageUrls }) => {
         setSelectedImage(null);
     };
     return (
-        // <div className="image-gallery">
-        //     {imageUrls.map((url, index) => (
-        //         // <div key={index}  >
-        //         //     <img src={url} alt={`Slide  ${index + 1}`} />
-        //         // </div>
-        //         <div key={index} className="image-container">
-        //             <img src={url} alt={`Image ${index + 1}`} />
-        //         </div>
-        //     ))}
-        // </div>
-        <div className="centered-div" >
-            <div>
+            <div className="centered-div">
                 {selectedImage && (
                     <div className="modal-image-container" style={{ top: modalPosition.top, left: modalPosition.left }}>
                         <ModalImage
@@ -59,7 +48,6 @@ const ImageCarousel = ({ imageUrls }) => {
                         />
                     </div>
                 )}
-            </div>
                 <Carousel autoplay={true} current={currentSlide} className="image-gallery">
                     {imageUrls.map((url, index) => (
                         <div key={index} >
@@ -70,7 +58,8 @@ const ImageCarousel = ({ imageUrls }) => {
                         </div>
                     ))}
                 </Carousel>
-        </div>
+            </div>
+
 
 
     );
