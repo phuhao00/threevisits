@@ -3,6 +3,7 @@ import './styles/Login.css';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Imagewall from './pages/Imagewall';
+import Vlog from './pages/Vlog';
 import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
 import React from "react";
 
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/" element={<Login />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/images" element={<Imagewall />} />
+                <Route path="/vlog" element={<Vlog />} />
             </Routes>
         </Router>
     </div>
