@@ -43,30 +43,7 @@ const Login = () => {
         }
     };
     const handleRegister = async (values) =>{
-        try {
-            const response = await fetch(`${apiUrl}`+"/register", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json.js',
-                },
-                body: StringifyWithCircularHandling(values),
-            });
-
-            if (response.ok) {
-                // 注册成功
-                message.success('Registration successful');
-                // 执行其他操作，如页面跳转等
-            } else {
-                // 注册失败
-                const errorData = await response.json();
-                message.error(errorData.message || 'Registration failed');
-                // 处理注册失败的逻辑，如显示错误提示等
-            }
-        } catch (error) {
-            console.error('Registration error:', error);
-            message.error('Registration error');
-            // 处理注册请求错误的逻辑，如显示错误提示等
-        }
+        navigate('/register');
     };
 
     return (
