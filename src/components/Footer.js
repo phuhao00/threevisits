@@ -1,45 +1,55 @@
-import { Layout, Row, Col } from 'antd';
+import {Layout, Row, Col, Space} from 'antd';
 import '../styles/Footer.css';
 import {Link} from "react-router-dom";
-import { MailOutlined, PhoneOutlined, WechatOutlined } from '@ant-design/icons';
+import {GithubOutlined, MailOutlined, PhoneOutlined, WechatOutlined} from '@ant-design/icons';
 
 const Footer = () => {
     const githubUrl = 'https://github.com/your-username/your-repo';
     const bilibiliUrl = 'https://github.com/your-username/your-repo';
     return (
         <div className="footer">
-            <Row className="footer-content">
-                <Col span={4}>
+            <Row className="footer-content" gutter={1}>
+                <Col span={4} >
                     <div className="footer-column">
-                        <h3 className="footer-heading">Github</h3>
-                        <Link to={githubUrl} target="_blank">
-                            Visit My GitHub repo
-                        </Link>
+                        <h3 className="footer-heading">About me</h3>
                     </div>
-                </Col>
-                <Col span={4}>
                     <div className="footer-column">
-                        <h3 className="footer-heading">bilibili</h3>
-                        <Link to={bilibiliUrl} target="_blank">
-                            Visit My Bilibili
-                        </Link>
+                        <Space.Compact>
+                            <GithubOutlined />
+                        </Space.Compact>
+                    </div>
+                    <></>
+                    <br />
+                    <div className="footer-column">
+                        <Space.Compact>
+                            <span className="bilibili-text">bilibili</span>
+                        </Space.Compact>
                     </div>
                 </Col>
                 <Col span={4}>
                     <div className="footer-column">
                         <h3 className="footer-heading">Contact me</h3>
-                        <div className="contact-info">
-                            <MailOutlined type="mail" />
-                            <p className="footer-text">outlook@example.com</p>
-                        </div>
-                        <div className="contact-info" >
-                            <PhoneOutlined type="phone" />
-                            <p className="footer-text">+123456789</p>
-                        </div>
-                        <div className="contact-info">
-                            <WechatOutlined type="wechat" />
-                            <p className="footer-text">werchatId</p>
-                        </div>
+                    </div>
+                    <div className="footer-column">
+                        <Space.Compact block>
+                            <Space.Compact>
+                                <MailOutlined className="icon" />
+                                <p className="footer-text">outlook@example.com</p>
+                            </Space.Compact>
+                        </Space.Compact>
+
+                        <Space.Compact block>
+                            <Space.Compact>
+                                <PhoneOutlined type="phone"  className="icon" />
+                                <p className="footer-text">+123456789</p>
+                            </Space.Compact>
+                        </Space.Compact>
+                        <Space.Compact block>
+                            <Space.Compact>
+                                <WechatOutlined type="wechat"  className="icon"  />
+                                <p className="footer-text">werchatId</p>
+                            </Space.Compact>
+                        </Space.Compact>
                     </div>
                 </Col>
             </Row>

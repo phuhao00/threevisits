@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import {Avatar, Col, Menu, Popover, Row} from 'antd';
 import {
+    CameraOutlined, FileWordOutlined, FolderOpenOutlined,
     HomeFilled,
     HomeOutlined,
     InfoCircleOutlined,
     LogoutOutlined,
-    MailOutlined,
-    UserOutlined
+    MailOutlined, ProjectOutlined,
+    UserOutlined, VideoCameraAddOutlined
 } from '@ant-design/icons';
 import '../styles/Navbar.css';
 import React, {useState} from "react";
@@ -43,19 +44,19 @@ const Navbar = () => {
                     <Menu.Item key="home" icon={<HomeFilled />}>
                         <Link to="/">简单介绍</Link>
                     </Menu.Item>
-                    <Menu.Item key="about" icon={<InfoCircleOutlined />}>
+                    <Menu.Item key="about" icon={<CameraOutlined />}>
                         <Link to="/images">照片墙</Link>
                     </Menu.Item>
-                    <Menu.Item key="vlogs" icon={<InfoCircleOutlined />}>
+                    <Menu.Item key="vlogs" icon={<VideoCameraAddOutlined />}>
                         <Link to="/vlogs">vlog</Link>
                     </Menu.Item>
-                    <Menu.Item key="projects" icon={<MailOutlined />}>
+                    <Menu.Item key="projects" icon={<ProjectOutlined />}>
                         <Link to="/projects">项目</Link>
                     </Menu.Item>
-                    <Menu.Item key="works" icon={<MailOutlined />}>
+                    <Menu.Item key="works" icon={<FolderOpenOutlined />}>
                         <Link to="/works">作品</Link>
                     </Menu.Item>
-                    <Menu.Item key="edit_resume" icon={<InfoCircleOutlined />}>
+                    <Menu.Item key="edit_resume" icon={<FileWordOutlined />}>
                         <Link to="/edit_resume">编辑简历</Link>
                     </Menu.Item>
                 </Menu>

@@ -33,20 +33,6 @@ const Home = () => {
             </Row>
             <Row  gutter={2}>
                 <Col span={24}>
-                    <Testimonials /> {/* 推荐语 */}
-                </Col>
-            </Row>
-            <Row gutter={2}>
-                <Col span={24}>
-                    <div>
-                        <button onClick={handleButtonClick}>填写简历</button>
-                        {showForm && <Resume />}
-                    </div>
-                </Col>
-
-            </Row>
-            <Row  gutter={2}>
-                <Col span={24}>
                     <Footer /> {/* 页脚 */}
                 </Col>
             </Row>
