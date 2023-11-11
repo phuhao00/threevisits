@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/Project.css';
+import {Col, Row} from "antd";
+import Navbar from "../components/Navbar";
 
 const ProjectPage = () => {
     const projects = [
@@ -24,6 +26,11 @@ const ProjectPage = () => {
 
     return (
         <div className="project-container">
+            <Row gutter={2}>
+                <Col span={24}>
+                    <Navbar /> {/* 导航栏 */}
+                </Col>
+            </Row>
             <h1 className="page-title">项目展示</h1>
             <div className="project-grid">
                 {projects.map((project) => (

@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/Works.css';
+import {Col, Row} from "antd";
+import Navbar from "../components/Navbar";
 
 const Portfolio = () => {
     const projects = [
@@ -20,6 +22,11 @@ const Portfolio = () => {
 
     return (
         <div className="portfolio-container">
+            <Row gutter={2}>
+                <Col span={24}>
+                    <Navbar /> {/* 导航栏 */}
+                </Col>
+            </Row>
             <h1>作品展示</h1>
             <div className="project-grid">
                 {projects.map((project) => (
