@@ -1,8 +1,7 @@
 # threevisits
 threevisits  is  Recruitment platform  and Candidate platform
 ```shell
-npm install react 
-npm install antd 
+npm install
 ```
 
 ```json
