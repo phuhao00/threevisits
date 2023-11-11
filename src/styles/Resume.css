@@ -47,3 +47,18 @@
 .form-group button:hover {
     background-color: #45a049;
 }
+
+
+.form-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s;
+}
+
+.form-container:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}

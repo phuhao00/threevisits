@@ -1,14 +1,53 @@
 import React from 'react';
-import {Form, Input, Button, message, Row, Col} from 'antd';
+import {Form, Input, Button, message, Row, Col, Select, Cascader} from 'antd';
 import StringifyWithCircularHandling from "../utils/json";
 import {  Navigate,useNavigate } from 'react-router-dom';
 
 import '../styles/register.css';
+const { Option } = Select;
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 const backendPort = process.env.REACT_APP_BACKEND_PORT;
 const apiUrl = `${backendUrl}:${backendPort}/api`;
-
+interface DataNodeType {
+    value: string;
+    label: string;
+    children?: DataNodeType[];
+}
+const residences: CascaderProps<DataNodeType>['options'] = [
+    {
+        value: 'zhejiang',
+        label: 'Zhejiang',
+        children: [
+            {
+                value: 'hangzhou',
+                label: 'Hangzhou',
+                children: [
+                    {
+                        value: 'xihu',
+                        label: 'West Lake',
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        value: 'jiangsu',
+        label: 'Jiangsu',
+        children: [
+            {
+                value: 'nanjing',
+                label: 'Nanjing',
+                children: [
+                    {
+                        value: 'zhonghuamen',
+                        label: 'Zhong Hua Men',
+                    },
+                ],
+            },
+        ],
+    },
+];
 const Register = () => {
     const navigate = useNavigate();
     const doRegister = (values) => {
@@ -51,6 +90,15 @@ const Register = () => {
             return Promise.resolve();
         }
     };
+    const prefixSelector = (
+        <Form.Item name="prefix" noStyle>
+            <Select style={{ width: 70 }}>
+                <Option value="86">+86</Option>
+                <Option value="87">+87</Option>
+            </Select>
+        </Form.Item>
+    );
+
 
     return (
         <div className="register-container">
@@ -84,7 +132,33 @@ const Register = () => {
                 >
                     <Input.Password />
                 </Form.Item>
-
+                <Form.Item
+                    name="residence"
+                    label="Habitual Residence"
+                    rules={[
+                        { type: 'array', required: true, message: 'Please select your habitual residence!' },
+                    ]}
+                >
+                    <Cascader options={residences} />
+                </Form.Item>
+                <Form.Item
+                    name="phone"
+                    label="Phone Number"
+                    rules={[{ required: true, message: 'Please input your phone number!' }]}
+                >
+                    <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+                </Form.Item>
+                <Form.Item
+                    name="gender"
+                    label="Gender"
+                    rules={[{ required: true, message: 'Please select gender!' }]}
+                >
+                    <Select placeholder="select your gender">
+                        <Option value="male">Male</Option>
+                        <Option value="female">Female</Option>
+                        <Option value="other">Other</Option>
+                    </Select>
+                </Form.Item>
                 <Form.Item className="form-item" >
                     <Button type="primary" htmlType="submit" className="register-button" block>
                         Register

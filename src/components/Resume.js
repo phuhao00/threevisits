@@ -1,7 +1,28 @@
 import React, { useState } from 'react';
-import {EditOutlined, EllipsisOutlined, PlusOutlined, SettingOutlined} from '@ant-design/icons';
+import {
+    EditOutlined,
+    EllipsisOutlined,
+    InboxOutlined,
+    PlusOutlined,
+    SettingOutlined,
+    UploadOutlined
+} from '@ant-design/icons';
 import '../styles/Resume.css'
-import {Form, Input, Button, Row, Col, DatePicker, Space, Typography, Card, Upload, Avatar,Image } from 'antd';
+import {
+    Form,
+    Input,
+    Button,
+    Row,
+    Col,
+    DatePicker,
+    Space,
+    Typography,
+    Card,
+    Upload,
+    Avatar,
+    Image,
+    InputNumber
+} from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 const { TextArea } = Input;
@@ -50,39 +71,38 @@ const ResumeForm = () => {
 
     return (
         <Row justify="center">
-            <Col xs={24} sm={20} md={16} lg={12} xl={8}>
-                <Form.Item>
-                    <Image
-                        width={200}
-                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                    />
-                    {/*<Card*/}
-                    {/*    style={{*/}
-                    {/*        width: 150,*/}
-                    {/*        height:150*/}
-                    {/*    }}*/}
-                    {/*    cover={*/}
-                    {/*        <img*/}
-                    {/*            alt="example"*/}
-                    {/*            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"*/}
-                    {/*        />*/}
-                    {/*    }*/}
-                    {/*    actions={[*/}
-                    {/*        // <SettingOutlined key="setting" />,*/}
-                    {/*        <EditOutlined key="edit" />,*/}
-                    {/*        // <EllipsisOutlined key="ellipsis" />,*/}
-                    {/*    ]}*/}
-                    {/*>*/}
-                    {/*    <Meta*/}
-                    {/*        avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}*/}
-                    {/*        title="Card title"*/}
-                    {/*        description="This is the description"*/}
-                    {/*    />*/}
-                    {/*</Card>*/}
-                </Form.Item>
+            <Col  span={13}>
 
-
-                <Form onFinish={handleSubmit}>
+                <Form onFinish={handleSubmit} size="middle" className="form-container" >
+                    <Form.Item>
+                        <Image
+                            width={200}
+                            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                        />
+                        {/*<Card*/}
+                        {/*    style={{*/}
+                        {/*        width: 150,*/}
+                        {/*        height:150*/}
+                        {/*    }}*/}
+                        {/*    cover={*/}
+                        {/*        <img*/}
+                        {/*            alt="example"*/}
+                        {/*            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"*/}
+                        {/*        />*/}
+                        {/*    }*/}
+                        {/*    actions={[*/}
+                        {/*        // <SettingOutlined key="setting" />,*/}
+                        {/*        <EditOutlined key="edit" />,*/}
+                        {/*        // <EllipsisOutlined key="ellipsis" />,*/}
+                        {/*    ]}*/}
+                        {/*>*/}
+                        {/*    <Meta*/}
+                        {/*        avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}*/}
+                        {/*        title="Card title"*/}
+                        {/*        description="This is the description"*/}
+                        {/*    />*/}
+                        {/*</Card>*/}
+                    </Form.Item>
                     <Form.Item label="姓名" name="name" rules={[{ required: true, message: '请输入姓名' }]}>
                         <Input />
                     </Form.Item>
@@ -95,7 +115,19 @@ const ResumeForm = () => {
                         <Input />
                     </Form.Item>
 
-
+                    <Form.Item
+                        name={['user', 'age']}
+                        label="Age"
+                        rules={[
+                            {   required:true,
+                                type: 'number',
+                                min: 0,
+                                max: 99,
+                            },
+                        ]}
+                    >
+                        <InputNumber />
+                    </Form.Item>
 
                     <Form.List name="items">
                         {(fields, { add, remove }) => (
@@ -307,11 +339,40 @@ const ResumeForm = () => {
                             </div>
                         )}
                     </Form.List>
-
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit">
-                            保存
-                        </Button>
+                    <Form.Item
+                        name="upload"
+                        label="Upload"
+                        valuePropName="fileList"
+                        getValueFromEvent={normFile}
+                        extra="longgggggggggggggggggggggggggggggggggg"
+                    >
+                        <Upload name="logo" action="/upload.do" listType="picture">
+                            <Button icon={<UploadOutlined />}>Click to upload</Button>
+                        </Upload>
+                    </Form.Item>
+                    <Form.Item label="Dragger">
+                        <Form.Item name="dragger" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
+                            <Upload.Dragger name="files" action="/upload.do">
+                                <p className="ant-upload-drag-icon">
+                                    <InboxOutlined />
+                                </p>
+                                <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                                <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+                            </Upload.Dragger>
+                        </Form.Item>
+                    </Form.Item>
+                    <Form.Item
+                        wrapperCol={{
+                            span: 12,
+                            offset: 6,
+                        }}
+                    >
+                        <Space>
+                            <Button type="primary" htmlType="submit">
+                                保存
+                            </Button>
+                            <Button htmlType="reset">reset</Button>
+                        </Space>
                     </Form.Item>
                 </Form>
             </Col>
