@@ -53,61 +53,69 @@ const Login = () => {
     };
 
     return (
-      <Layout>
-          <Sider
-              theme="light"
-              breakpoint="md"
-              collapsedWidth="0"
-              width="1000"
-              className="login-sider"
-              onChange={handleSliderChange}
-          >
-              <div>
-                  <h2 className="login-title">Welcome Three Visits !</h2>
-                  <p>Please enter your credentials to login.</p>
-              </div>
-              <div  className="video-container">
-                  <video controls  className="video-element">
-                      <source src="helu.mp4" type="video/mp4" />
-                      {/*<source src="video.webm" type="video/webm" />*/}
-                      {/*Your browser does not support the video tag.*/}
-                  </video>
-              </div>
+        <Row>
+            <Col span={16}>
+                <Sider
+                    theme="light"
+                    breakpoint="md"
+                    collapsedWidth="0"
+                    width="1000"
+                    className="login-sider"
+                    onChange={handleSliderChange}
+                >
+                    <div>
+                        <h2 className="login-title">Welcome Three Visits !</h2>
+                        <p>Please enter your credentials to login.</p>
+                    </div>
+                    <div  className="video-container">
+                        <video controls  className="video-element">
+                            <source src="helu.mp4" type="video/mp4" />
+                            {/*<source src="video.webm" type="video/webm" />*/}
+                            {/*Your browser does not support the video tag.*/}
+                        </video>
+                    </div>
 
-          </Sider>
-        <Content  className="login-container">
-            <div className="login-form">
-                <Form name="login-form" onFinish={onFinish}>
-                    <Form.Item name="username" rules={[{ required: true, message: 'Please enter your username' }]}>
-                        <Input prefix={<UserOutlined />} placeholder="Username"
-                               value={username}
-                               onChange={(e) => setUsername(e.target.value)}
-                        />
-                    </Form.Item>
-                    <Form.Item name="password" rules={[{ required: true, message: 'Please enter your password' }]}>
-                        <Input prefix={<LockOutlined />} type="password" placeholder="Password"
-                               value={password}
-                               onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </Form.Item>
-                    <Form.Item>
-                        <Row gutter={8}>
-                            <Col span={12}>
-                                <Button type="primary" htmlType="submit" className="login-button" block>
-                                    Log in
-                                </Button>
-                            </Col>
-                            <Col span={12}>
-                                <Button type="primary" onClick={handleRegister} block>
-                                    Sign In
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Form.Item>
-                </Form>
-            </div>
-        </Content >
-   </Layout>
+                </Sider>
+            </Col>
+            <Col span={8}>
+                <Content  className="login-container">
+                    <div className="login-form">
+                        <Form name="login-form" onFinish={onFinish}>
+                            <Form.Item name="username" rules={[{ required: true, message: 'Please enter your username' }]}>
+                                <Input prefix={<UserOutlined />} placeholder="Username"
+                                       value={username}
+                                       onChange={(e) => setUsername(e.target.value)}
+                                />
+                            </Form.Item>
+                            <Form.Item name="password" rules={[{ required: true, message: 'Please enter your password' }]}>
+                                <Input prefix={<LockOutlined />} type="password" placeholder="Password"
+                                       value={password}
+                                       onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </Form.Item>
+                            <Form.Item>
+                                <Row gutter={8}>
+                                    <Col span={12}>
+                                        <Button type="primary" htmlType="submit" className="login-button" block>
+                                            Log in
+                                        </Button>
+                                    </Col>
+                                    <Col span={12}>
+                                        <Button type="primary" onClick={handleRegister} block>
+                                            Sign In
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                        </Form>
+                    </div>
+                </Content >
+            </Col>
+        </Row>
+      // <Layout>
+
+
+   // </Layout>
     );
 };
 
