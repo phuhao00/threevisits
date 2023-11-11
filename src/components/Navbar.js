@@ -42,7 +42,7 @@ const Navbar = () => {
             <Col span={23}>
                 <Menu mode="horizontal" theme="dark">
                     <Menu.Item key="home" icon={<HomeFilled />}>
-                        <Link to="/">简单介绍</Link>
+                        <Link to="/home">简单介绍</Link>
                     </Menu.Item>
                     <Menu.Item key="about" icon={<CameraOutlined />}>
                         <Link to="/images">照片墙</Link>
