@@ -57,7 +57,7 @@ const Navbar = () => {
                         <Link to="/works">作品</Link>
                     </Menu.Item>
                     <Menu.Item key="edit_resume" icon={<FileWordOutlined />}>
-                        <Link to="/edit_resume">编辑简历</Link>
+                        <Link to="/edit_resume">我的简历</Link>
                     </Menu.Item>
                 </Menu>
             </Col>
