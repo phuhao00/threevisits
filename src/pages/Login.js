@@ -1,14 +1,15 @@
 import React , { useState }  from 'react';
-import {Form, Input, Button, Row, Col, message} from 'antd';
+import {Layout,Form, Input, Button, Row, Col, message} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import StringifyWithCircularHandling from "../utils/json";
 import {  Navigate,useNavigate } from 'react-router-dom';
+import '../styles/Login.css';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 const backendPort = process.env.REACT_APP_BACKEND_PORT;
 
 const apiUrl = `${backendUrl}:${backendPort}/api`;
-
+const { Sider, Content } = Layout;
 const Login = () => {
     const navigate = useNavigate();
     const [loggedIn, setLoggedIn] = useState(false);
@@ -47,10 +48,35 @@ const Login = () => {
         navigate('/register');
     };
 
+    const handleSliderChange = (value) => {
+        // 处理滑块值的变化
+    };
+
     return (
-        <div className="login-container">
+      <Layout>
+          <Sider
+              theme="light"
+              breakpoint="md"
+              collapsedWidth="0"
+              width="1000"
+              className="login-sider"
+              onChange={handleSliderChange}
+          >
+              <div>
+                  <h2 className="login-title">Welcome Three Visits !</h2>
+                  <p>Please enter your credentials to login.</p>
+              </div>
+              <div  className="video-container">
+                  <video controls  className="video-element">
+                      <source src="helu.mp4" type="video/mp4" />
+                      {/*<source src="video.webm" type="video/webm" />*/}
+                      {/*Your browser does not support the video tag.*/}
+                  </video>
+              </div>
+
+          </Sider>
+        <Content  className="login-container">
             <div className="login-form">
-                <h1 className="login-title">Welcome Three Visits !</h1>
                 <Form name="login-form" onFinish={onFinish}>
                     <Form.Item name="username" rules={[{ required: true, message: 'Please enter your username' }]}>
                         <Input prefix={<UserOutlined />} placeholder="Username"
@@ -80,7 +106,8 @@ const Login = () => {
                     </Form.Item>
                 </Form>
             </div>
-        </div>
+        </Content >
+   </Layout>
     );
 };
 
