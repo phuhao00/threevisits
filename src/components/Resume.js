@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {EditOutlined, EllipsisOutlined, PlusOutlined, SettingOutlined} from '@ant-design/icons';
 import '../styles/Resume.css'
-import {Form, Input, Button, Row, Col, DatePicker, Space, Typography, Card, Upload, Avatar,} from 'antd';
+import {Form, Input, Button, Row, Col, DatePicker, Space, Typography, Card, Upload, Avatar,Image } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 const { TextArea } = Input;
@@ -52,29 +52,33 @@ const ResumeForm = () => {
         <Row justify="center">
             <Col xs={24} sm={20} md={16} lg={12} xl={8}>
                 <Form.Item>
-                    <Card
-                        style={{
-                            width: 200,
-                            height:300
-                        }}
-                        cover={
-                            <img
-                                alt="example"
-                                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                            />
-                        }
-                        actions={[
-                            <SettingOutlined key="setting" />,
-                            <EditOutlined key="edit" />,
-                            <EllipsisOutlined key="ellipsis" />,
-                        ]}
-                    >
-                        <Meta
-                            avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
-                            title="Card title"
-                            description="This is the description"
-                        />
-                    </Card>
+                    <Image
+                        width={200}
+                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    />
+                    {/*<Card*/}
+                    {/*    style={{*/}
+                    {/*        width: 150,*/}
+                    {/*        height:150*/}
+                    {/*    }}*/}
+                    {/*    cover={*/}
+                    {/*        <img*/}
+                    {/*            alt="example"*/}
+                    {/*            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"*/}
+                    {/*        />*/}
+                    {/*    }*/}
+                    {/*    actions={[*/}
+                    {/*        // <SettingOutlined key="setting" />,*/}
+                    {/*        <EditOutlined key="edit" />,*/}
+                    {/*        // <EllipsisOutlined key="ellipsis" />,*/}
+                    {/*    ]}*/}
+                    {/*>*/}
+                    {/*    <Meta*/}
+                    {/*        avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}*/}
+                    {/*        title="Card title"*/}
+                    {/*        description="This is the description"*/}
+                    {/*    />*/}
+                    {/*</Card>*/}
                 </Form.Item>
 
 
