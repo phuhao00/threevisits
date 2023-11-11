@@ -22,6 +22,7 @@ const Login = () => {
                 headers: {
                     'Content-Type': 'application/json.js',
                 },
+
                 body: StringifyWithCircularHandling(values),
             });
 

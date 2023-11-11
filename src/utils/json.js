@@ -1,23 +1,17 @@
+function StringifyWithCircularHandling(obj) {
+  const cache = new Set();
 
-const StringifyWithCircularHandling = (value) => {
-  return new Promise((resolve, reject) => {
-    try {
-      const cache = new Set();
-      const result = JSON.stringify(value, (_, v) => {
-        if (typeof v === 'object' && v !== null) {
-          if (cache.has(v)) {
-            return '[Circular]';
-          }
-          cache.add(v);
-        }
-        return v;
-      });
-      resolve(result);
-    } catch (error) {
-      reject(error);
+  return JSON.stringify(obj, (key, value) => {
+    if (typeof value === 'object' && value !== null) {
+      if (cache.has(value)) {
+        // 处理循环引用
+        return '[Circular]';
+      }
+      cache.add(value);
     }
+    return value;
   });
-};
+}
 
 export default StringifyWithCircularHandling;
 

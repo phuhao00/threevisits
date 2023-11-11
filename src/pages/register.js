@@ -1,6 +1,8 @@
 import React from 'react';
 import {Form, Input, Button, message, Row, Col} from 'antd';
 import StringifyWithCircularHandling from "../utils/json";
+import {  Navigate,useNavigate } from 'react-router-dom';
+
 import '../styles/register.css';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
@@ -8,6 +10,7 @@ const backendPort = process.env.REACT_APP_BACKEND_PORT;
 const apiUrl = `${backendUrl}:${backendPort}/api`;
 
 const Register = () => {
+    const navigate = useNavigate();
     const doRegister = (values) => {
         console.log("jjjjjj")
         return new Promise((resolve, reject) => {
@@ -21,6 +24,7 @@ const Register = () => {
                 .then((response) => {
                     if (response.ok) {
                         message.success('Registration successful');
+                        navigate("/")
                         resolve(); // 成功时解析 Promise
                     } else {
                         return response.json().then((errorData) => {
