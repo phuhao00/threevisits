@@ -25,8 +25,8 @@ const VlogPage = () => {
     return (
         <div className="vlog-container">
             <Row gutter={2}>
-                <Col span={24}>
-                    <Navbar /> {/* 导航栏 */}
+                <Col span={ 24 }>
+                  <Navbar></Navbar>  {/* 导航栏 */}
                 </Col>
             </Row>
             <Row>

@@ -5,14 +5,14 @@ import { Col, Row,Popover} from "antd";
 const EditResume=()=>{
 
     return (
-        <div>
+        <div className="Edit-container ">
             <Row gutter={2}>
                 <Col span={24}>
                     <Navbar></Navbar>
                 </Col>
 
             </Row>
-            <Row>
+            <Row gutter={2}>
                 <Col span={24}>
                     <Resume></Resume>
                 </Col>
