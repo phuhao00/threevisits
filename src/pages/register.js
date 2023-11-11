@@ -40,26 +40,14 @@ const Register = () => {
     const [form] = Form.useForm();
 
     const compareToFirstPassword = (_, value) => {
-        const { password } = form.getFieldsValue();
+        const password = form.getFieldValue('password');
         if (value && value !== password) {
-            console.log("99999999")
             return Promise.reject('The two passwords do not match.');
         } else {
-            console.log("11111111111111")
-
             return Promise.resolve();
         }
     };
 
-    const validateToNextPassword = (_, value) => {
-        console.log("ooooooooooo")
-        if (value && form.getFieldValue('confirmPassword')) {
-            console.log("555555555555555")
-
-            form.validateFields(['confirmPassword']);
-        }
-        return Promise.resolve();
-    };
     return (
         <div className="register-container">
             <Form name="register-form" onFinish={doRegister}  form={form} >
@@ -71,23 +59,24 @@ const Register = () => {
                 </Form.Item>
 
                 <Form.Item
-                    label="Password"
                     name="password"
+                    label="Password"
                     rules={[
                         { required: true, message: 'Please enter your password' },
-                        { validator: validateToNextPassword },
                     ]}
                 >
                     <Input.Password />
                 </Form.Item>
 
                 <Form.Item
-                    label="Confirm Password"
                     name="confirmPassword"
+                    label="Confirm Password"
                     rules={[
                         { required: true, message: 'Please confirm your password' },
                         { validator: compareToFirstPassword },
                     ]}
+                    dependencies={['password']}
+                    hasFeedback
                 >
                     <Input.Password />
                 </Form.Item>
