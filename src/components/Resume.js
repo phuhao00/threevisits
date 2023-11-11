@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
+import {EditOutlined, EllipsisOutlined, PlusOutlined, SettingOutlined} from '@ant-design/icons';
 import '../styles/Resume.css'
-import { Form, Input, Button,Row,Col,DatePicker, Space, Typography,Card, Upload, } from 'antd';
+import {Form, Input, Button, Row, Col, DatePicker, Space, Typography, Card, Upload, Avatar,} from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
-
+const { Meta } = Card;
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 const ResumeForm = () => {
@@ -51,6 +51,33 @@ const ResumeForm = () => {
     return (
         <Row justify="center">
             <Col xs={24} sm={20} md={16} lg={12} xl={8}>
+                <Form.Item>
+                    <Card
+                        style={{
+                            width: 200,
+                            height:300
+                        }}
+                        cover={
+                            <img
+                                alt="example"
+                                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                            />
+                        }
+                        actions={[
+                            <SettingOutlined key="setting" />,
+                            <EditOutlined key="edit" />,
+                            <EllipsisOutlined key="ellipsis" />,
+                        ]}
+                    >
+                        <Meta
+                            avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
+                            title="Card title"
+                            description="This is the description"
+                        />
+                    </Card>
+                </Form.Item>
+
+
                 <Form onFinish={handleSubmit}>
                     <Form.Item label="姓名" name="name" rules={[{ required: true, message: '请输入姓名' }]}>
                         <Input />
