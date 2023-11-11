@@ -22,6 +22,9 @@ const Navbar = () => {
             <Menu.Item key="contact" icon={<MailOutlined />}>
                 <Link to="/contact">作品</Link>
             </Menu.Item>
+            <Menu.Item key="edit_resume" icon={<InfoCircleOutlined />}>
+                <Link to="/edit_resume">编辑简历</Link>
+            </Menu.Item>
         </Menu>
     );
 };
