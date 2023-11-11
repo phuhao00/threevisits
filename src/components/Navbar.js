@@ -46,14 +46,14 @@ const Navbar = () => {
                     <Menu.Item key="about" icon={<InfoCircleOutlined />}>
                         <Link to="/images">照片墙</Link>
                     </Menu.Item>
-                    <Menu.Item key="about" icon={<InfoCircleOutlined />}>
-                        <Link to="/vlog">vlog</Link>
+                    <Menu.Item key="vlogs" icon={<InfoCircleOutlined />}>
+                        <Link to="/vlogs">vlog</Link>
                     </Menu.Item>
-                    <Menu.Item key="contact" icon={<MailOutlined />}>
-                        <Link to="/contact">项目</Link>
+                    <Menu.Item key="projects" icon={<MailOutlined />}>
+                        <Link to="/projects">项目</Link>
                     </Menu.Item>
-                    <Menu.Item key="contact" icon={<MailOutlined />}>
-                        <Link to="/contact">作品</Link>
+                    <Menu.Item key="works" icon={<MailOutlined />}>
+                        <Link to="/works">作品</Link>
                     </Menu.Item>
                     <Menu.Item key="edit_resume" icon={<InfoCircleOutlined />}>
                         <Link to="/edit_resume">编辑简历</Link>

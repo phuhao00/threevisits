@@ -1,0 +1,38 @@
+.portfolio-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.project-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.project-details {
+    margin-top: 10px;
+}
+
+.project-details h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.project-details p {
+    font-size: 14px;
+    color: #666;
+}
