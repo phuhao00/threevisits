@@ -17,8 +17,8 @@ const EditResume=()=>{
         const element = document.getElementById('pdf-content');
 
         html2canvas(element, { scrollY: -window.scrollY }).then((canvas) => {
-            const imageData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', 'a4');
+            const imageData = canvas.toDataURL('image/jpg');
+            const pdf = new jsPDF('p', 'pc', 'a4');
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
             pdf.addImage(imageData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
@@ -34,8 +34,8 @@ const EditResume=()=>{
                 </Col>
 
             </Row>
-            <Row gutter={2}>
-                <Col span={24} id="pdf-content">
+            <Row gutter={2} justify="center">
+                <Col span={13} id="pdf-content">
                     <Resume></Resume>
                 </Col>
 

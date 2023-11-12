@@ -89,7 +89,7 @@ const ResumeForm = () => {
             <Document>
                 <Page size="A4" style={styles.page}>
                     <Row justify="center">
-                        <Col  span={13}>
+                        <Col  span={24}>
 
                             <Form onFinish={handleSubmit} size="middle" className="form-container" >
                                 <Form.Item>
