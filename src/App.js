@@ -9,6 +9,7 @@ import Vlog from './pages/Vlog';
 import Project from './pages/Project';
 import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
 import React from "react";
+import ReactDOM from "react-dom";
 
 function App() {
   return (
