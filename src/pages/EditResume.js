@@ -13,14 +13,17 @@ const EditResume=()=>{
         ReactPDF.render(<Resume/>, `${__dirname}/example.pdf`).then(r =>{}) ;
     };
 
+
     const handleGeneratePDF = () => {
         const element = document.getElementById('pdf-content');
 
         html2canvas(element, { scrollY: -window.scrollY }).then((canvas) => {
-            const imageData = canvas.toDataURL('image/jpg');
-            const pdf = new jsPDF('p', 'pc', 'a4');
+            const imageData = canvas.toDataURL('image/jpeg');
+
+            const pdf = new jsPDF('p', 'mm', 'a4');
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
+
             pdf.addImage(imageData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
             pdf.save('example.pdf');
         });
@@ -43,15 +46,9 @@ const EditResume=()=>{
                 {/*    <PDFViewer>*/}
                 {/*    </PDFViewer>*/}
                 {/*</Col>*/}
-            </Row>
-            <Row>
-                <Col span={24} >
-                    <div id="pdf-content">
-                        <Button type="primary" onClick={handleGeneratePDF}>
-                            Generate PDF
-                        </Button>
-                    </div>
-                </Col>
+                <Button type="primary" onClick={handleGeneratePDF}>
+                    Generate PDF
+                </Button>
             </Row>
         </div>
     )
